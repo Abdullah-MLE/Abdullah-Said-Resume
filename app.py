@@ -1,330 +1,287 @@
 import streamlit as st
-from PIL import Image
-import base64
+from data.testimonials import testimonials
+from data.projects import projects
+from data.services import services
 
-# Page configuration
-st.set_page_config(
-    page_title="Abdullah Said - AI & Data Science Engineer",
-    page_icon="🤖",
-    layout="wide",
-    initial_sidebar_state="collapsed"
-)
+# =============================================================================
+# PORTFOLIO CLASS
+# =============================================================================
+class Portfolio:
+    """Simple portfolio website class"""
 
-# Custom CSS for styling
-st.markdown("""
-<style>
-    .main {
-        padding: 0px 20px;
-    }
-    .stApp {
-        background-color: #0e1117;
-    }
-    .hero-section {
-        text-align: center;
-        padding: 50px 0;
-        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-        border-radius: 20px;
-        margin-bottom: 50px;
-    }
-    .profile-img {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        border: 5px solid white;
-        margin-bottom: 20px;
-    }
-    .social-links {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        margin: 20px 0;
-    }
-    .social-links a {
-        color: white;
-        font-size: 18px;
-        text-decoration: none;
-        padding: 10px 20px;
-        background: rgba(255,255,255,0.1);
-        border-radius: 10px;
-        transition: all 0.3s;
-    }
-    .social-links a:hover {
-        background: rgba(255,255,255,0.2);
-        transform: translateY(-3px);
-    }
-    .section-header {
-        color: #3498db;
-        border-bottom: 3px solid #3498db;
-        padding-bottom: 10px;
-        margin-bottom: 30px;
-    }
-    .skill-tag {
-        display: inline-block;
-        background: #2c3e50;
-        color: white;
-        padding: 8px 15px;
-        margin: 5px;
-        border-radius: 20px;
-        font-size: 14px;
-    }
-    .project-card {
-        background: #1a1a2e;
-        padding: 20px;
-        border-radius: 15px;
-        margin-bottom: 20px;
-        border: 1px solid #333;
-        transition: all 0.3s;
-    }
-    .project-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
-    .experience-item {
-        background: #16213e;
-        padding: 20px;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        border-left: 4px solid #3498db;
-    }
-    .cert-link {
-        color: #3498db;
-        text-decoration: none;
-        margin-right: 15px;
-        display: inline-block;
-        padding: 5px 10px;
-        background: rgba(52, 152, 219, 0.1);
-        border-radius: 5px;
-        transition: all 0.3s;
-    }
-    .cert-link:hover {
-        background: rgba(52, 152, 219, 0.2);
-    }
-</style>
-""", unsafe_allow_html=True)
+    def __init__(self):
+        """Initialize portfolio"""
+        self.projects = projects
+        self.services = services
 
-# Load profile image
-try:
-    image = Image.open('personal photo.png')
-    
-    # Convert image to base64
-    import io
-    img_buffer = io.BytesIO()
-    image.save(img_buffer, format='PNG')
-    img_str = base64.b64encode(img_buffer.getvalue()).decode()
-    
-    # Hero Section with Profile
-    st.markdown(f"""
-    <div class="hero-section">
-        <img src="data:image/png;base64,{img_str}" class="profile-img">
-        <h1 style="color: white; font-size: 48px; margin-bottom: 10px;">Abdullah Said</h1>
-        <h2 style="color: #ecf0f1; font-size: 28px; font-weight: 300;">AI & Data Science Engineer</h2>
-        <p style="color: #bdc3c7; font-size: 18px; max-width: 800px; margin: 20px auto;">
-            Results-driven AI & Data Science Engineer with hands-on experience in developing, 
-            deploying, and optimizing machine learning and deep learning models.
-        </p>
-        <div class="social-links">
-            <a href="https://github.com/yourusername" target="_blank">GitHub</a>
-            <a href="https://linkedin.com/in/abdullah-said-mle" target="_blank">LinkedIn</a>
-            <a href="mailto:abdullahsaid814@gmail.com">Email</a>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-except:
-    # Fallback hero section without image
-    st.markdown("""
-    <div class="hero-section">
-        <h1 style="color: white; font-size: 48px; margin-bottom: 10px;">Abdullah Said</h1>
-        <h2 style="color: #ecf0f1; font-size: 28px; font-weight: 300;">AI & Data Science Engineer</h2>
-        <p style="color: #bdc3c7; font-size: 18px; max-width: 800px; margin: 20px auto;">
-            Results-driven AI & Data Science Engineer with hands-on experience in developing, 
-            deploying, and optimizing machine learning and deep learning models.
-        </p>
-        <div class="social-links">
-            <a href="https://github.com/yourusername" target="_blank">GitHub</a>
-            <a href="https://linkedin.com/in/abdullah-said-mle" target="_blank">LinkedIn</a>
-            <a href="mailto:abdullahsaid814@gmail.com">Email</a>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Contact Information
-col1, col2, col3 = st.columns(3)
-with col1:
-    st.info("Phone: +201020965984")
-with col2:
-    st.info("Email: abdullahsaid814@gmail.com")
-with col3:
-    st.info("Location: Cairo, Egypt")
-
-# About Section
-st.markdown("<h2 class='section-header'>About Me</h2>", unsafe_allow_html=True)
-st.write("""
-A passionate AI & Data Science Engineer with expertise in developing and deploying machine learning solutions. 
-Skilled in applying artificial intelligence algorithms to solve real-world problems, with practical expertise 
-in data analysis, visualization, and building end-to-end applications. Strong background in machine learning 
-pipelines, RAG-based systems, and data-driven decision-making. Currently pursuing a Bachelor's degree in 
-Artificial Intelligence at Banha University (Class of 2026).
-""")
-
-# Key Competencies
-st.markdown("<h2 class='section-header'>Key Competencies</h2>", unsafe_allow_html=True)
-skills = [
-    "Machine Learning", "Deep Learning", "Data Analysis", "Data Visualization",
-    "Data Cleaning", "Model Deployment", "SQL & Databases", "Power BI",
-    "FastAPI", "Streamlit", "RAG Systems", "LlamaIndex", "Web Scraping",
-    "Problem Solving", "Research Projects", "Team Collaboration"
-]
-
-skills_html = "".join([f"<span class='skill-tag'>{skill}</span>" for skill in skills])
-st.markdown(f"<div style='margin: 20px 0;'>{skills_html}</div>", unsafe_allow_html=True)
-
-# Professional Experience
-st.markdown("<h2 class='section-header'>Professional Experience</h2>", unsafe_allow_html=True)
-
-experiences = [
-    {
-        "title": "Practical Projects",
-        "company": "Faculty of Computers & Artificial Intelligence | Banha University",
-        "description": [
-            "Implemented artificial intelligence algorithms from scratch to solve real-world problems",
-            "Conducted applied projects using Weka 3 - Data Mining with Open Source Machine Learning",
-            "Gained solid knowledge of machine learning algorithms and introduction to deep learning"
+        self.achievements = [
+            "Achievement 1: Lorem ipsum dolor sit amet.",
+            "Achievement 2: Consectetur adipiscing elit.",
+            "Achievement 3: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         ]
-    },
-    {
-        "title": "AI Trainee",
-        "company": "NTI (National Telecommunication Institute)",
-        "description": [
-            "Applied all major machine learning algorithms on real datasets",
-            "Developed introductory deep learning models for classification and regression problems"
-        ]
-    },
-    {
-        "title": "AI Intern",
-        "company": "Namesoft Company",
-        "description": [
-            "Built multiple practical AI projects including RAG (Retrieval-Augmented Generation) system",
-            "Developed Neural Network from scratch",
-            "Implemented Llama Index integration project",
-            "Created Dynamic Routing for LLMs project"
-        ]
-    }
-]
 
-for exp in experiences:
-    st.markdown(f"""
-    <div class='experience-item'>
-        <h3 style='color: #3498db; margin-bottom: 5px;'>{exp['title']}</h3>
-        <p style='color: #95a5a6; margin-bottom: 10px;'>{exp['company']}</p>
-    </div>
-    """, unsafe_allow_html=True)
-    for desc in exp['description']:
-        st.write(f"• {desc}")
-    st.write("")
+        self.testimonials = sorted(testimonials, key=lambda x: x['timestamp'], reverse=True)
 
-# Projects Section
-st.markdown("<h2 class='section-header'>Projects</h2>", unsafe_allow_html=True)
+    def render_header(self):
+        """Render simple header"""
+        st.title("Abdullah Said Portfolio")
 
-# Project data with placeholder GitHub links
-projects = [
-    {
-        "name": "Football Data Visualization Dashboard",
-        "description": "Advanced football data analytics dashboard built with Streamlit for comprehensive statistical analysis and visualization",
-        "github": "https://github.com/yourusername/football-dashboard"
-    },
-    {
-        "name": "Mini-RAG Project",
-        "description": "Lightweight retrieval-augmented generation system implementing efficient document retrieval and response generation",
-        "github": "https://github.com/yourusername/mini-rag"
-    },
-    {
-        "name": "Stock Revenue Analysis Dashboard",
-        "description": "Comprehensive stock market analysis tool with historical data visualization and trend analysis built with Python and Streamlit",
-        "github": "https://github.com/yourusername/stock-analysis"
-    },
-    {
-        "name": "Real-Estate Data Cleanse",
-        "description": "Data cleaning pipeline for real estate datasets, implementing advanced preprocessing and validation techniques",
-        "github": "https://github.com/yourusername/realestate-cleanse"
-    },
-    {
-        "name": "Web Scraping Automation",
-        "description": "Automated data extraction and structuring system for various web sources using modern scraping techniques",
-        "github": "https://github.com/yourusername/web-scraper"
-    },
-    {
-        "name": "Power BI Interactive Dashboards",
-        "description": "Collection of interactive business intelligence dashboards created for data-driven decision making",
-        "github": "https://github.com/yourusername/powerbi-dashboards"
-    },
-    {
-        "name": "FastAPI ML Services",
-        "description": "RESTful API services for machine learning model deployment and real-time inference",
-        "github": "https://github.com/yourusername/fastapi-ml"
-    }
-]
+    def render_tabs(self):
+        """Render main tabs"""
+        tabs = st.tabs(["About", "Services", "Projects", "Skills", "Education", "Achievements", "Testimonials"])
 
-# Display projects in a grid
-col1, col2 = st.columns(2)
-for i, project in enumerate(projects):
-    with col1 if i % 2 == 0 else col2:
-        st.markdown(f"""
-        <div class='project-card'>
-            <h3 style='color: #3498db;'>{project['name']}</h3>
-            <p style='color: #bdc3c7; margin: 10px 0;'>{project['description']}</p>
-            <a href='{project['github']}' target='_blank' style='color: #3498db; text-decoration: none;'>
-                View on GitHub →
-            </a>
-        </div>
-        """, unsafe_allow_html=True)
+        with tabs[0]:
+            self.render_about()
 
-# Education Section
-st.markdown("<h2 class='section-header'>Education</h2>", unsafe_allow_html=True)
+        with tabs[1]:
+            self.render_services()
 
-col1, col2 = st.columns([2, 1])
-with col1:
-    st.markdown("""
-    <div class='experience-item'>
-        <h3 style='color: #3498db;'>Bachelor's Degree in Artificial Intelligence</h3>
-        <p style='color: #95a5a6;'>Banha University - Faculty of Computers & Artificial Intelligence</p>
-        <p style='color: #bdc3c7;'>Expected Graduation: 2026</p>
-    </div>
-    """, unsafe_allow_html=True)
+        with tabs[2]:
+            self.render_projects()
 
-# Certifications and Links
-st.markdown("<h2 class='section-header'>Certifications & Learning</h2>", unsafe_allow_html=True)
+        with tabs[3]:
+            self.render_skills()
 
-st.markdown("### Professional Certifications - Coursera")
-certifications = [
-    {"name": "Data Analysis Specialization", "link": "https://coursera.org/certificate/data-analysis"},
-    {"name": "Database Management", "link": "https://coursera.org/certificate/databases"},
-    {"name": "Machine Learning", "link": "https://coursera.org/certificate/machine-learning"},
-    {"name": "Deep Learning Specialization", "link": "https://coursera.org/certificate/deep-learning"},
-    {"name": "Data Science Professional Certificate", "link": "https://coursera.org/certificate/data-science"}
-]
+        with tabs[4]:
+            self.render_education()
 
-cert_html = ""
-for cert in certifications:
-    cert_html += f"<a href='{cert['link']}' target='_blank' class='cert-link'>{cert['name']}</a>"
-st.markdown(f"<div style='margin: 20px 0;'>{cert_html}</div>", unsafe_allow_html=True)
+        with tabs[5]:
+            self.render_achievements()
 
-# Footer with additional links
-st.markdown("---")
-st.markdown("""
-<div style='text-align: center; padding: 20px 0;'>
-    <h3 style='color: #3498db; margin-bottom: 20px;'>Connect With Me</h3>
-    <div class='social-links' style='justify-content: center;'>
-        <a href='https://github.com/yourusername' target='_blank'>GitHub Profile</a>
-        <a href='https://linkedin.com/in/abdullah-said-mle' target='_blank'>LinkedIn</a>
-        <a href='https://coursera.org/user/yourusername' target='_blank'>Coursera Profile</a>
-        <a href='https://www.bu.edu.eg/en' target='_blank'>Banha University</a>
-    </div>
-</div>
-""", unsafe_allow_html=True)
+        with tabs[6]:
+            self.render_testimonials()
 
-# Add a professional footer
-st.markdown("""
-<div style='text-align: center; color: #7f8c8d; padding: 30px 0;'>
-    <p>© 2024 Abdullah Said. All rights reserved.</p>
-</div>
-""", unsafe_allow_html=True)
+    def render_about(self):
+        """Render about section"""
+        st.header("About Me")
+
+        col1, col2 = st.columns([2, 1])
+
+        with col1:
+            st.write("""
+            Hello! I'm a passionate software developer with expertise in full-stack development 
+            and data analysis. I love creating innovative solutions that make a real impact.
+            
+            With 5+ years of experience in the tech industry, I've worked on various projects 
+            ranging from web applications to machine learning models. I'm always eager to learn 
+            new technologies and take on challenging projects.
+            
+            When I'm not coding, you can find me exploring new technologies, contributing to 
+            open-source projects, or enjoying outdoor activities.
+            """)
+
+        with col2:
+            # To display your photo, create an 'assets' folder in your project root
+            # and place an image file named 'profile.png' inside it.
+            st.image("assets/profile.png", width=350, )
+            
+        st.markdown("---")
+        st.header("Contact Me")
+
+        col1, col2 = st.columns(2)
+
+        with col1:
+            st.subheader("Get in Touch")
+            st.write("""
+            I'm always open to discussing new opportunities and interesting projects.
+            Feel free to reach out!
+            
+            📧 Email: abdullahsaid814@gmail.com
+            
+            📱 Phone: +20 010 2069 5984
+            
+            📍 Location: Ciro, Egypt
+            """)
+
+        with col2:
+            st.subheader("Social Media")
+            st.write("""
+            🔗 [LinkedIn](https://linkedin.com)
+            
+            💻 [GitHub](https://github.com)
+            
+            🐦 [Twitter](https://twitter.com)
+            
+            🌐 [Personal Website](https://example.com)
+            """)
+
+    def render_services(self):
+        """Render services grid"""
+        st.header("My Services")
+
+        # Create grid layout - 4 columns per row
+        for i in range(0, len(self.services), 4):
+            cols = st.columns(4)
+
+            for j in range(4):
+                if i + j < len(self.services):
+                    service = self.services[i + j]
+
+                    with cols[j]:
+                        # Service card
+                        with st.container():
+                            st.image(service["image"], use_column_width=True)
+                            st.subheader(service["title"])
+                            st.write(service["description"])
+
+                        st.markdown("---")
+
+    def render_projects(self):
+        """Render projects grid"""
+        st.header("My Projects")
+
+        # Create grid layout - 4 columns per row
+        for i in range(0, len(self.projects), 4):
+            cols = st.columns(4)
+
+            for j in range(4):
+                if i + j < len(self.projects):
+                    project = self.projects[i + j]
+
+                    with cols[j]:
+                        # Project card
+                        with st.container():
+                            st.image(project["image"], use_column_width=True)
+                            st.subheader(project["title"])
+                            st.write(project["description"])
+                            
+                            # Tech stack
+                            tech_tags = " ".join([f"`{tech}`" for tech in project["tech"]])
+                            st.markdown(tech_tags)
+                            
+                            # View project button
+                            if st.button(
+                                "View Project",
+                                key=f"btn_{i+j}",
+                                use_container_width=True
+                            ):
+                                st.switch_page(f"Projects/{project['page']}.py")
+
+                        st.markdown("---")
+
+    def render_skills(self):
+        """Render skills section"""
+        st.header("Key Competencies")
+
+        col1, col2, col3 = st.columns(3)
+
+        with col1:
+            st.subheader("AI & Machine Learning")
+            st.write("""
+            - Machine Learning
+            - Deep Learning
+            - Model Deployment
+            - RAG Systems
+            - LlamaIndex
+            """)
+
+        with col2:
+            st.subheader("Data & Analytics")
+            st.write("""
+            - Data Analysis
+            - Data Visualization
+            - Data Cleaning
+            - SQL & Databases
+            - Power BI
+            - Web Scraping
+            """)
+
+        with col3:
+            st.subheader("Development & Professional")
+            st.write("""
+            - FastAPI / Streamlit
+            - Problem Solving
+            - Research Projects
+            - Team Collaboration
+            """)
+
+    def render_education(self):
+        """Render education section"""
+        st.header("Education & Certifications")
+
+        st.subheader(
+            "Banha University – Faculty of Computers & Artificial Intelligence"
+        )
+        st.write("**Bachelor’s Degree in Artificial Intelligence**, Class of 2026")
+
+        st.markdown("---")
+
+        st.subheader("Professional Certifications – Coursera (Selected)")
+        st.write("""
+        - Data Analysis
+        - Databases
+        - Machine Learning
+        - Deep Learning
+        - Data Science
+        """)
+
+    def render_achievements(self):
+        """Render achievements section"""
+        st.header("My Achievements")
+        for achievement in self.achievements:
+            st.markdown(f"- {achievement}")
+
+    def render_testimonials(self):
+        """Render testimonials section"""
+        st.header("Client Testimonials")
+
+        # Create grid layout - 3 columns per row
+        for i in range(0, len(self.testimonials), 3):
+            cols = st.columns(3)
+
+            for j in range(3):
+                if i + j < len(self.testimonials):
+                    testimonial = self.testimonials[i + j]
+
+                    with cols[j]:
+                        # Testimonial card
+                        with st.container():
+                            col1, col2 = st.columns([3, 1])
+                            with col1:
+                                st.subheader(testimonial["client_name"])
+                            with col2:
+                                st.write(testimonial["rating"])
+                            
+                            st.write(f"**Location:** {testimonial['location']}")
+                            st.write(f"**Project:** {testimonial['project_name']}")
+                            st.write(f"**Cost:** {testimonial['project_cost']}")
+                            st.write(f"**Duration:** {testimonial['project_duration']}")
+                            if st.button("View Rating", key=f"view_rating_{i+j}", use_container_width=True):
+                                # Define action for the button, e.g., switch page or show modal
+                                pass
+
+                        st.markdown("---")
+
+    def run(self):
+        """Main method to run the app"""
+        self.render_header()
+        self.render_tabs()
+
+
+# =============================================================================
+# MAIN APPLICATION
+# =============================================================================
+def main():
+    st.set_page_config(
+        page_title="My Portfolio", 
+        layout="wide",
+        initial_sidebar_state="collapsed"
+    )
+
+    portfolio = Portfolio()
+    hide_img_fs = '''
+        <style>
+        button[title="View fullscreen"]{
+            visibility: hidden;}
+        </style>
+    '''
+    st.markdown(hide_img_fs, unsafe_allow_html=True)
+
+    portfolio.run()
+
+
+# =============================================================================
+# RUN
+# =============================================================================
+if __name__ == "__main__":
+    main()
