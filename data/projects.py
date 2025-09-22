@@ -2,7 +2,7 @@ IMG_PLACEHOLDER = "assets/profile.png"
 
 projects = [
     {
-        "title": "Football Data Visualization Dashboard",
+        "title": "Football Data Visualization",
         "description": "Advanced football data analytics built with Streamlit.",
         "image": "assets/Football Data Visualization Dashboard.png",
         "tech": ["Streamlit", "Python", "Data Visualization"],

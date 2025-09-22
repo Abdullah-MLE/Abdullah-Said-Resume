@@ -25,7 +25,7 @@ def render_project_page():
     # Hero image
     st.image(
         HERO_IMG,
-        use_column_width=True,
+        use_container_width=True,
         caption="Football Analytics Dashboard - Main Interface"
     )
 

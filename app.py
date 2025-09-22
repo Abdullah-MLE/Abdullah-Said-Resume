@@ -19,8 +19,32 @@ class Portfolio:
     def render_header(self):
         st.title("Abdullah Said Portfolio")
 
+    def render_sidebar(self):
+        with st.sidebar:
+            st.header("Get in Touch")
+            st.write("""
+            I'm always open to discussing new opportunities and interesting projects.
+            Feel free to reach out!
+            
+            📧 Email: abdullahsaid814@gmail.com
+            
+            📱 Phone: +20 010 2069 5984
+            
+            📍 Location: Ciro, Egypt
+            """)
+            st.subheader("Social Media")
+            st.write("""
+            🔗 [LinkedIn](https://linkedin.com)
+            
+            💻 [GitHub](https://github.com)
+            
+            🐦 [Twitter](https://twitter.com)
+            
+            🌐 [Personal Website](https://example.com)
+            """)
+
     def render_tabs(self):
-        tabs = st.tabs(["About", "Services", "Projects", "Testimonials", "Achievements", "Contact Me", "Education"])
+        tabs = st.tabs(["About", "Services", "Projects", "Testimonials", "Achievements", "Education"])
 
         with tabs[0]:
             self.render_about()
@@ -36,11 +60,8 @@ class Portfolio:
 
         with tabs[4]:
             self.render_achievements()
-
-        with tabs[5]:
-            self.render_contact_me()
             
-        with tabs[6]:
+        with tabs[5]:
             self.render_education()
 
     def render_about(self):
@@ -59,37 +80,10 @@ class Portfolio:
             open-source projects, or enjoying outdoor activities.
             """)
         with col2:
-            st.image("assets/profile.png", width=350)
+            st.image("assets/profile.png")
         
-        st.markdown("---")
+        st.write("---")
         self.render_skills()
-
-    def render_contact_me(self):
-        st.header("Contact Me")
-        col1, col2 = st.columns(2)
-        with col1:
-            st.subheader("Get in Touch")
-            st.write("""
-            I'm always open to discussing new opportunities and interesting projects.
-            Feel free to reach out!
-            
-            📧 Email: abdullahsaid814@gmail.com
-            
-            📱 Phone: +20 010 2069 5984
-            
-            📍 Location: Ciro, Egypt
-            """)
-        with col2:
-            st.subheader("Social Media")
-            st.write("""
-            🔗 [LinkedIn](https://linkedin.com)
-            
-            💻 [GitHub](https://github.com)
-            
-            🐦 [Twitter](https://twitter.com)
-            
-            🌐 [Personal Website](https://example.com)
-            """)
 
     def render_services(self):
         st.header("My Services")
@@ -104,8 +98,7 @@ class Portfolio:
                             st.subheader(service["title"])
                             st.write(service["description"])
                             if st.button("Show More", key=f"show_more_{i+j}", use_container_width=True):
-                                st.switch_page(f"services/{service['page']}.py")
-                            st.link_button("Order Now", "#contact-me", use_container_width=True)
+                                st.switch_page(f"pages/service_{service['page']}.py")
                         st.markdown("---")
 
     def render_projects(self):
@@ -123,8 +116,8 @@ class Portfolio:
                             tech_tags = " ".join([f"`{tech}`" for tech in project["tech"]])
                             st.markdown(tech_tags)
                             if st.button("View Project", key=f"btn_{i+j}", use_container_width=True):
-                                st.switch_page(f"Projects/{project['page']}.py")
-                        st.markdown("---")
+                                st.switch_page(f"pages/project_{project['page']}.py")
+            st.markdown("---")
 
     def render_skills(self):
         st.header("Key Competencies")
@@ -178,11 +171,7 @@ class Portfolio:
         for testimonial in self.testimonials:
             with st.container():
                 st.subheader(testimonial["client_name"])
-                col1, col2 = st.columns([3, 1])
-                with col1:
-                    st.markdown(f"**{testimonial['project_name']}**")
-                with col2:
-                    st.write(testimonial["rating"])
+                st.markdown(f"**{testimonial['project_name']}**     {testimonial['rating']}")
 
                 col1, col2, col3, col4 = st.columns(4)
                 with col1:
@@ -196,6 +185,7 @@ class Portfolio:
                 st.markdown("---")
 
     def run(self):
+        self.render_sidebar()
         self.render_header()
         self.render_tabs()
 
@@ -205,21 +195,17 @@ def main():
         layout="wide",
         initial_sidebar_state="collapsed"
     )
-    portfolio = Portfolio()
-    hide_img_fs = '''
+    
+    st.markdown("""
         <style>
-        button[title="View fullscreen"]{
-            visibility: hidden;}
-        div[data-testid="stHorizontalBlock"] div[data-testid="stVerticalBlock"] {
-            height: 450px;
-        }
-        div[data-testid="stHorizontalBlock"] div[data-testid="stVerticalBlock"] img {
-            object-fit: cover;
-            height: 200px;
-        }
+            [data-testid="stSidebarNav"] {
+                display: none;
+            }
         </style>
-    '''
-    st.markdown(hide_img_fs, unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
+
+    portfolio = Portfolio()
+
     portfolio.run()
 
 if __name__ == "__main__":
