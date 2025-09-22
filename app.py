@@ -100,7 +100,7 @@ class Portfolio:
                     service = self.services[i + j]
                     with cols[j]:
                         with st.container():
-                            st.image(service["image"], use_column_width=True)
+                            st.image(service["image"], use_container_width=True)
                             st.subheader(service["title"])
                             st.write(service["description"])
                             if st.button("Show More", key=f"show_more_{i+j}", use_container_width=True):
@@ -117,7 +117,7 @@ class Portfolio:
                     project = self.projects[i + j]
                     with cols[j]:
                         with st.container():
-                            st.image(project["image"], use_column_width=True)
+                            st.image(project["image"], use_container_width=True)
                             st.subheader(project["title"])
                             st.write(project["description"])
                             tech_tags = " ".join([f"`{tech}`" for tech in project["tech"]])
