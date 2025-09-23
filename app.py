@@ -12,7 +12,7 @@ class Portfolio:
             key=lambda x: datetime.fromisoformat(x['timestamp']),
             reverse=True
         )
-        self.certifications = self.load_data('data/certifications.json')
+        self.education = self.load_data('data/education.json')
         self.contact_info = self.load_data('data/contact_info.json')
 
     def load_data(self, filepath):
@@ -22,30 +22,33 @@ class Portfolio:
     def render_header(self):
         st.title("Abdullah Said Portfolio")
 
+    def _render_contact_details(self):
+        st.header("Get in Touch")
+        st.write(
+            "I'm always open to discussing new opportunities and "
+            "interesting projects. Feel free to reach out!"
+        )
+        st.write(f'📧 Email: {self.contact_info["email"]}')
+        st.write(f'📱 Phone: {self.contact_info["phone"]}')
+        st.write(f'📍 Location: {self.contact_info["location"]}')
+
+        st.subheader("Social Media")
+        st.write(
+            f'- [WhatsApp]({self.contact_info["whatsapp"]})\n'
+            f'- [LinkedIn]({self.contact_info["LinkedIn"]})\n'
+            f'- [GitHub]({self.contact_info["GitHub"]})\n'
+            f'- [Twitter]({self.contact_info["Twitter"]})\n'
+            f'- [Personal Website]({self.contact_info["Personal Website"]})\n'
+        )
+
     def render_sidebar(self):
         with st.sidebar:
-            st.header("Get in Touch")
-            st.write(f"""
-                I'm always open to discussing new opportunities and
-                interesting projects. Feel free to reach out!
-
-                📧 Email: {self.contact_info["email"]}
-                📱 Phone: {self.contact_info["phone"]}
-                📍 Location: {self.contact_info["location"]}
-            """)
-            st.subheader("Social Media")
-            st.write(f"""
-                🔗 [LinkedIn]({self.contact_info["LinkedIn"]})\n
-                💻 [GitHub]({self.contact_info["GitHub"]})]\n
-                🐦 [Twitter]({self.contact_info["Twitter"]})\n
-                🌐 [Personal Website]({self.contact_info["Personal Website"]})\n
-                📱 [WhatsApp]({self.contact_info["whatsapp"]})
-            """)
+            self._render_contact_details()
 
     def render_tabs(self):
         tabs = st.tabs([
-            "About", "Services", "Projects", "Testimonials",
-            "Achievements", "Education", "Contact"
+            "About", "Services", "Projects", "Testimonials", "Education",
+            "Contact"
         ])
 
         with tabs[0]:
@@ -61,12 +64,9 @@ class Portfolio:
             self.render_testimonials()
 
         with tabs[4]:
-            self.render_achievements()
-
-        with tabs[5]:
             self.render_education()
 
-        with tabs[6]:
+        with tabs[5]:
             self.render_contact()
 
     def render_about(self):
@@ -101,7 +101,7 @@ class Portfolio:
                 if i + j < len(self.services):
                     service = self.services[i + j]
                     with cols[j]:
-                        with st.container():  # noqa: E501
+                        with st.container(border=True):
                             st.image(
                                 service["image"], use_container_width='always'
                             )
@@ -120,7 +120,7 @@ class Portfolio:
                                     url=self.contact_info["whatsapp"],
                                     use_container_width=True
                                 )
-                        st.markdown("---")
+            st.markdown("---")
 
     def render_projects(self):
         st.header("My Projects")
@@ -130,7 +130,7 @@ class Portfolio:
                 if i + j < len(self.projects):
                     project = self.projects[i + j]
                     with cols[j]:
-                        with st.container():
+                        with st.container(border=True):
                             st.image(project["image"],
                                      use_container_width='always')
                             st.subheader(project["title"])
@@ -187,25 +187,49 @@ class Portfolio:
 
     def render_education(self):
         st.header("Education")
-        st.subheader(
-            "Banha University – Faculty of Computers & Artificial Intelligence"
-        )
-        st.write(
-            "**Bachelor’s Degree in Artificial Intelligence**, Class of 2026"
-        )
-        st.link_button(
-            "Visit University Website", "https://fci.bu.edu.eg/"
-        )
 
-    def render_achievements(self):
+        st.subheader("University")
+        for edu in self.education['university']:
+            st.markdown(f'''
+                <a href="{edu['url']}" style="text-decoration: none; color: inherit;">
+                    <h4 style="margin-bottom: 0;">{edu['name']}</h4>
+                </a>
+                ''',
+                unsafe_allow_html=True
+            )
+            st.write(f"**{edu['degree']}**")
+
+
+        st.write("---")
+
         st.subheader("Professional Certifications")
-        for cert in self.certifications:
-            st.markdown(f"- [{cert['name']}]({cert['url']})")
+        for cert in self.education['professional_certifications']:
+            st.markdown(f'''
+                <a href="{cert['url']}" style="text-decoration: none; color: inherit;">
+                    <h4 style="margin-bottom: 0;">{cert['name']}</h4>
+                </a>
+                <small>Issued by <strong>{cert['issuer']}</strong> in {cert['date']}</small>
+                ''',
+                unsafe_allow_html=True
+            )
+
+        st.write("---")
+
+        st.subheader("Other Certificates")
+        for cert in self.education['other_certificates']:
+            st.markdown(f'''
+                <a href="{cert['url']}" style="text-decoration: none; color: inherit;">
+                    <h4 style="margin-bottom: 0;">{cert['name']}</h4>
+                </a>
+                <small>Issued by <strong>{cert['issuer']}</strong> in {cert['date']}</small>
+                ''',
+                unsafe_allow_html=True
+            )
 
     def render_testimonials(self):
         st.header("Client Testimonials")
         for testimonial in self.testimonials:
-            with st.container():
+            with st.container(border=True):
                 st.subheader(testimonial["client_name"])
                 st.markdown(
                     f"**{testimonial['project_name']}**     "
@@ -223,26 +247,15 @@ class Portfolio:
                     )
                 with col4:
                     st.link_button("View Testimonial", testimonial["link"])
-                st.markdown("---")
+            st.markdown("---")
 
     def render_contact(self):
-        st.header("Get in Touch")
-        st.write(f"""
-            I'm always open to discussing new opportunities and interesting
-            projects. Feel free to reach out!
-
-            📧 Email: {self.contact_info["email"]}
-            📱 Phone: {self.contact_info["phone"]}
-            📍 Location: {self.contact_info["location"]}
-        """)
-        st.subheader("Social Media")
-        st.write(f"""
-            🔗 [LinkedIn]({self.contact_info["LinkedIn"]})
-            💻 [GitHub]({self.contact_info["GitHub"]})
-            🐦 [Twitter]({self.contact_info["Twitter"]})
-            🌐 [Personal Website]({self.contact_info["Personal Website"]})
-            📱 [WhatsApp]({self.contact_info["whatsapp"]})
-        """)
+        self._render_contact_details()
+        st.subheader("Hire me on freelance platforms")
+        freelance_links = ""
+        for platform, url in self.contact_info["freelance_platforms"].items():
+            freelance_links += f"- [{platform}]({url})\n"
+        st.write(freelance_links)
 
     def run(self):
         self.render_sidebar()

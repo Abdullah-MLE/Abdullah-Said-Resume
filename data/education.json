@@ -1,0 +1,91 @@
+{
+    "university": [
+        {
+            "name": "Banha University - Faculty of Computers & Artificial Intelligence",
+            "degree": "Bachelor's Degree in Information Systems, Class of 2026",
+            "url": "https://fci.bu.edu.eg/"
+        }
+    ],
+    "professional_certifications": [
+        {
+            "name": "Google Data Analytics Professional Certificate",
+            "issuer": "Google",
+            "date": "2025",
+            "url": "#"
+        },
+        {
+            "name": "IBM Data Analyst Professional Certificate",
+            "issuer": "IBM",
+            "date": "2025",
+            "url": "#"
+        },
+        {
+            "name": "Google IT Automation with Python Professional Certificate",
+            "issuer": "Google",
+            "date": "2025",
+            "url": "#"
+        },
+        {
+            "name": "Software Design and Architecture Specialization",
+            "issuer": "University of Alberta",
+            "date": "2025",
+            "url": "#"
+        },
+        {
+            "name": "Data Analysis Professional Certificate",
+            "issuer": "Google",
+            "date": "2023",
+            "url": "https://www.coursera.org/account/accomplishments/professional-cert/2Y3J4K5L6M7N"
+        },
+        {
+            "name": "Python for Data Science, AI & Development",
+            "issuer": "IBM",
+            "date": "2023",
+            "url": "https://www.coursera.org/account/accomplishments/certificate/XYZABC123"
+        }
+    ],
+    "other_certificates": [
+        {
+            "name": "Getting Started with Deep Learning",
+            "issuer": "NVIDIA",
+            "date": "2025",
+            "url": "#"
+        },
+        {
+            "name": "BiteSize Python for Intermediate Learners Specialization",
+            "issuer": "University of Colorado Boulder",
+            "date": "2025",
+            "url": "#"
+        },
+        {
+            "name": "Learn SQL Basics for Data Science Specialization",
+            "issuer": "University of California, Davis",
+            "date": "2025",
+            "url": "#"
+        },
+        {
+            "name": "Data Analysis using Power BI",
+            "issuer": "CARE Egypt",
+            "date": "2025",
+            "url": "#"
+        },
+        {
+            "name": "Python Language Fundamentals",
+            "issuer": "MaharaTech",
+            "date": "2025",
+            "url": "#"
+        },
+        {
+            "name": "SQL (Intermediate) Certificate",
+            "issuer": "HackerRank",
+            "date": "2022",
+            "url": "https://www.hackerrank.com/certificates/sample_cert_2"
+        },
+        {
+            "name": "Certificate of Completion for Python Basics",
+            "issuer": "HackerRank",
+            "date": "2022",
+            "url": "https://www.hackerrank.com/certificates/sample_cert_1"
+        }
+    ]
+}

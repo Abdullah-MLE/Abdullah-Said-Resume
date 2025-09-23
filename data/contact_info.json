@@ -6,5 +6,10 @@
     "LinkedIn": "https://www.linkedin.com/in/abdullah-said-mle/",
     "GitHub": "https://github.com/Abdullah-MLE",
     "Twitter": "https://x.com/abdullahsaid814",
-    "Personal Website": "https://abdullah-said-resume.streamlit.app/"
+    "Personal Website": "https://abdullah-said-resume.streamlit.app/",
+    "freelance_platforms": {
+        "Mostaql": "https://mostaql.com/u/Abdullah_Said8",
+        "Freelancer": "https://www.freelancer.com/u/Abdullahsaid1",
+        "Upwork": "https://www.upwork.com/freelancers/~01346d28aab74595fc"
+    }
 }
