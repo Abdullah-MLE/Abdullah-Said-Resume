@@ -7,11 +7,7 @@ class Portfolio:
     def __init__(self):
         self.projects = self.load_data('data/projects.json')
         self.services = self.load_data('data/services.json')
-        self.testimonials = sorted(
-            self.load_data('data/testimonials.json'),
-            key=lambda x: datetime.fromisoformat(x['timestamp']),
-            reverse=True
-        )
+        self.testimonials = self.load_data('data/testimonials.json')
         self.education = self.load_data('data/education.json')
         self.contact_info = self.load_data('data/contact_info.json')
         self.content = self.load_data('data/content.json')
@@ -75,7 +71,7 @@ class Portfolio:
         with col1:
             st.write(self.content['about']['text'])
         with col2:
-            st.image("assets/profile.png")
+            st.image("assets\personal_photos\profile.png")
 
         st.write("---")
         self.render_skills()
@@ -109,37 +105,85 @@ class Portfolio:
                                 )
             st.markdown("---")
 
-    def render_projects(self):
-        st.header("My Projects")
-        for i in range(0, len(self.projects), 4):
+    def _render_projects_by_category(self, category):
+        filtered_projects = [p for p in self.projects if p.get("Category") == category]
+
+        for i in range(0, len(filtered_projects), 4):
             cols = st.columns(4)
             for j in range(4):
-                if i + j < len(self.projects):
-                    project = self.projects[i + j]
+                if i + j < len(filtered_projects):
+                    project = filtered_projects[i + j]
                     with cols[j]:
                         with st.container(border=True):
-                            st.image(project["image"],
-                                     use_container_width='always')
+                            st.image(project["image"], use_container_width='always')
                             st.subheader(project["title"])
-                            st.write(project["description"])
-                            tech_tags = " ".join(
-                                [f"`{tech}`" for tech in project["tech"]]
-                            )
+                            st.write(project["description"] if "description" in project else "")
+
+                            # Tags
+                            tech_tags = " ".join([f"`{tech}`" for tech in project["tech"]])
                             st.markdown(tech_tags)
-                            button_cols = st.columns(2)
-                            with button_cols[0]:
+
+                            # Buttons
+                            if project["show_live_url"] != "#":
+                                button_cols = st.columns(2)
+
+                                # Show Live (only if url != "#")
+                                with button_cols[0]:
+                                    st.link_button(
+                                        "Show Live",
+                                        url=project["show_live_url"],
+                                        use_container_width=True
+                                    )
+
+                                # Source
+                                if project["Source_url"] != "#":
+                                    with button_cols[1]:
+                                        st.link_button(
+                                            "Source",
+                                            url=project["Source_url"],
+                                            use_container_width=True
+                                        )
+                            elif project["Source_url"] != "#":
                                 st.link_button(
-                                    "Show Live",
-                                    url=project["show_live_url"],
+                                    "Source",
+                                    url=project["Source_url"],
                                     use_container_width=True
                                 )
-                            with button_cols[1]:
-                                st.link_button(
-                                    "GitHub",
-                                    url=project["github_url"],
-                                    use_container_width=True
-                                )
+
             st.markdown("---")
+
+    def render_projects(self):
+        st.header("My Projects")
+
+        tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(["AI", "Automation", "Data Analysis", "Web Scraping", "ML & Data Science", "Deep Learning", "Websites"])
+
+        with tab1:
+            st.subheader("AI Projects")
+            self._render_projects_by_category("ai")
+
+        with tab2:
+            st.subheader("Automation Projects")
+            self._render_projects_by_category("automation")
+
+        with tab3:
+            st.subheader("EDA, Dashbords, Data Analysis, Data Cleaning and Data Visualization Projects")
+            self._render_projects_by_category("data_analysis")
+
+        with tab4:
+            st.subheader("Web Scraping Projects")
+            self._render_projects_by_category("web_scraping")
+
+        with tab5:
+            st.subheader("ML & Data Science Projects")
+            self._render_projects_by_category("ml_data_science")
+
+        with tab6:
+            st.subheader("Deep Learning Projects")
+            self._render_projects_by_category("deep_learning")
+
+        with tab7:
+            st.subheader("Websites")
+            self._render_projects_by_category("websites")
 
     def render_skills(self):
         st.header(self.content['skills']['header'])
@@ -154,66 +198,77 @@ class Portfolio:
     def render_education(self):
         st.header("Education")
 
-        st.subheader("University")
-        for edu in self.education['university']:
-            st.markdown(f'''
-                <a href="{edu['url']}" style="text-decoration: none; color: inherit;">
-                    <h4 style="margin-bottom: 0;">{edu['name']}</h4>
-                </a>
-                ''',
-                unsafe_allow_html=True
-            )
-            st.write(f"**{edu['degree']}**")
+        tab1, tab2, tab3 = st.tabs(["University", "Professional Certificate", "Achievements"])
 
+        with tab1:
+            st.subheader("University")
+            for edu in self.education['university']:
+                with st.container(border=True):
+                    col1, col2 = st.columns([1, 4])
+                    with col1:
+                        if edu['image']:
+                            st.image(edu['image'], use_container_width='always')
+                    with col2:
+                        st.write(f"**{edu['name']}**")
+                        st.write(edu['degree'])
 
-        st.write("---")
+        with tab2:
+            st.subheader("Professional Certificate")
+            for cert in self.education['Professional Certificate']:
+                with st.container(border=True):
+                    col1, col2 = st.columns([1, 4])
+                    with col1:
+                        if cert['image']:
+                            st.image(cert['image'], use_container_width='always')
+                    with col2:
+                        st.markdown(f"**<a href='{cert['url']}' style='color: #ADD8E6;'>{cert['name']}</a>**", unsafe_allow_html=True)
+                        st.markdown(f"<small>Issued by <strong>{cert['issuer']}</strong> in {cert['date']}</small>", unsafe_allow_html=True)
+                        st.markdown(f"<small>{cert['hours']}</small>", unsafe_allow_html=True)
 
-        st.subheader("Professional Certifications")
-        for cert in self.education['professional_certifications']:
-            st.markdown(f'''
-                <a href="{cert['url']}" style="text-decoration: none; color: inherit;">
-                    <h4 style="margin-bottom: 0;">{cert['name']}</h4>
-                </a>
-                <small>Issued by <strong>{cert['issuer']}</strong> in {cert['date']}</small>
-                ''',
-                unsafe_allow_html=True
-            )
-
-        st.write("---")
-
-        st.subheader("Other Certificates")
-        for cert in self.education['other_certificates']:
-            st.markdown(f'''
-                <a href="{cert['url']}" style="text-decoration: none; color: inherit;">
-                    <h4 style="margin-bottom: 0;">{cert['name']}</h4>
-                </a>
-                <small>Issued by <strong>{cert['issuer']}</strong> in {cert['date']}</small>
-                ''',
-                unsafe_allow_html=True
-            )
-
+        with tab3:
+            st.subheader("Achievements")
+            for cert in self.education['achievements']:
+                with st.container(border=True):
+                    col1, col2 = st.columns([1, 4])
+                    with col1:
+                        if cert['image']:
+                            st.image(cert['image'], use_container_width='always')
+                    with col2:
+                        st.markdown(f"**<a href='{cert['url']}' style='color: #ADD8E6;'>{cert['name']}</a>**", unsafe_allow_html=True)
+                        st.markdown(f"<small>Issued by <strong>{cert['issuer']}</strong> in {cert['date']}</small>", unsafe_allow_html=True)
+                        st.markdown(f"<small>{cert['hours']}</small>", unsafe_allow_html=True)
+    
     def render_testimonials(self):
         st.header("Client Testimonials")
         for testimonial in self.testimonials:
-            with st.container(border=True):
-                st.subheader(testimonial["client_name"])
+            with st.container(border=True, width="stretch"):
+                # Client name + position
                 st.markdown(
-                    f"**{testimonial['project_name']}**     "
-                    f"{testimonial['rating']}"
+                    f"### {testimonial['client_name']}  "
+                    f"<span style='font-size:14px; color:gray;'>({testimonial.get('position', '')})</span>",
+                    unsafe_allow_html=True
                 )
 
-                col1, col2, col3, col4 = st.columns(4)
+                # Project name + rating in columns
+                col1, col2 = st.columns(2)
                 with col1:
-                    st.write(f"**Platform:** {testimonial['location']}")
+                    st.markdown(f"**Project:** {testimonial['project_name']}")
                 with col2:
-                    st.write(f"**Cost:** {testimonial['project_cost']}")
+                    st.markdown(f"**Rating:** {testimonial['rating']}")
+
+                # Platform, Cost, Duration in columns
+                col1, col2, col3 = st.columns(3)
+                with col1:
+                    st.markdown(f"**Platform:** {testimonial['location']}")
+                with col2:
+                    st.markdown(f"**Cost:** {testimonial['project_cost']}")
                 with col3:
-                    st.write(
-                        f"**Duration:** {testimonial['project_duration']}"
-                    )
-                with col4:
-                    st.link_button("View Testimonial", testimonial["link"])
-            st.markdown("---")
+                    st.markdown(f"**Duration:** {testimonial['project_duration']}")
+
+                # Testimonial message
+                col1, col2, col3 = st.columns([1, 4, 1])
+                with col2:
+                    st.markdown(f"*\"{testimonial['message']}\"*")
 
     def render_contact(self):
         self._render_contact_details()

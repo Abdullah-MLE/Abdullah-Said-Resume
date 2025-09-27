@@ -3,89 +3,124 @@
         {
             "name": "Banha University - Faculty of Computers & Artificial Intelligence",
             "degree": "Bachelor's Degree in Information Systems, Class of 2026",
-            "url": "https://fci.bu.edu.eg/"
+            "image": "assets/education_photos/university/benha university.png",
+            "url": "#"
         }
     ],
-    "professional_certifications": [
+    "Professional Certificate": [
         {
             "name": "Google Data Analytics Professional Certificate",
             "issuer": "Google",
             "date": "2025",
+            "image": "assets/education_photos/Professional Certificate/Google Data Analytics Professional Certificate.png",
+            "hours": "152 hours",
             "url": "#"
         },
         {
             "name": "IBM Data Analyst Professional Certificate",
             "issuer": "IBM",
             "date": "2025",
+            "image": "assets/education_photos/Professional Certificate/IBM Data Analyst Professional Certificate.png",
+            "hours": "174 hours",
             "url": "#"
         },
         {
             "name": "Google IT Automation with Python Professional Certificate",
             "issuer": "Google",
             "date": "2025",
+            "image": "assets/education_photos/Professional Certificate/Google IT Automation with Python Professional Certificate.png",
+            "hours": "131 hours",
             "url": "#"
         },
         {
             "name": "Software Design and Architecture Specialization",
             "issuer": "University of Alberta",
             "date": "2025",
+            "image": "assets/education_photos/Professional Certificate/Software Design and Architecture Specialization.png",
+            "hours": "50 hours",
             "url": "#"
         },
         {
             "name": "Data Analysis Professional Certificate",
             "issuer": "Google",
             "date": "2023",
-            "url": "https://www.coursera.org/account/accomplishments/professional-cert/2Y3J4K5L6M7N"
-        },
-        {
-            "name": "Python for Data Science, AI & Development",
-            "issuer": "IBM",
-            "date": "2023",
-            "url": "https://www.coursera.org/account/accomplishments/certificate/XYZABC123"
+            "image": "assets/education_photos/Professional Certificate/Data Analysis Professional Certificate.png",
+            "hours": "152 hours",
+            "url": "#"
         }
     ],
-    "other_certificates": [
+    "achievements": [
         {
             "name": "Getting Started with Deep Learning",
             "issuer": "NVIDIA",
             "date": "2025",
+            "image": "assets/education_photos/achievements/Getting Started with Deep Learning.png",
+            "hours": "8 hours",
             "url": "#"
+        },
+        {
+            "name": "AI for All: From Basics to GenAI Practice",
+            "issuer": "NVIDIA",
+            "date": "2025",
+            "image": "assets/education_photos/achievements/AI for All From Basics to GenAI Practice.png",
+            "hours": "3.4 hours",
+            "url": "https://academy.nvidia.com/en/course/ai-for-all-from-basics-to-genai-practice/?cm=81220"
+        },
+        {
+            "name": "Become a Probability & Statistics Master",
+            "issuer": "Udemy - Krista King",
+            "date": "2024",
+            "image": "assets/education_photos/achievements/Become a Probability & Statistics Master.png",
+            "hours": "15 hours",
+            "url": "https://www.udemy.com/course/statistics-probability/?couponCode=25BBPMXINACTIVE"
         },
         {
             "name": "BiteSize Python for Intermediate Learners Specialization",
             "issuer": "University of Colorado Boulder",
-            "date": "2025",
-            "url": "#"
+            "date": "2024",
+            "image": "assets/education_photos/achievements/BiteSize Python for Intermediate Learners Specialization.png",
+            "hours": "46 hours",
+            "url": "https://www.coursera.org/specializations/bitesize-python-for-intermediate-learners"
         },
         {
             "name": "Learn SQL Basics for Data Science Specialization",
             "issuer": "University of California, Davis",
             "date": "2025",
-            "url": "#"
+            "image": "assets/education_photos/achievements/Learn SQL Basics for Data Science Specialization.png",
+            "hours": "58 hours",
+            "url": "https://www.coursera.org/specializations/learn-sql-basics-data-science"
         },
         {
             "name": "Data Analysis using Power BI",
             "issuer": "CARE Egypt",
             "date": "2025",
-            "url": "#"
+            "image": "assets/education_photos/achievements/Data Analysis using Power BI.png",
+            "hours": "40 hours",
+            "url": "https://www.linkedin.com/company/care-egypt/posts/?feedView=all&viewAsMember=true"
+        },
+        {
+            "name": "100 Days of Code: The Complete Python Pro Bootcamp",
+            "issuer": "Udemy - Dr.Angela Yu",
+            "date": "2024",
+            "image": "assets/education_photos/achievements/100 Days of Code The Complete Python Pro Bootcamp.png",
+            "hours": "52 hours",
+            "url": "https://www.udemy.com/course/100-days-of-code/"
+        },
+        {
+            "name": "Mastering critical SKILLS in Data Structures using Python",
+            "issuer": "Udemy - Dr.Moustafa Saad",
+            "date": "2023",
+            "image": "assets/education_photos/achievements/Mastering critical SKILLS in Data Structures using Python.png",
+            "hours": "100 hours",
+            "url": "https://www.udemy.com/course/python-ds-skills/?couponCode=25BBPMXINACTIVE"
         },
         {
             "name": "Python Language Fundamentals",
             "issuer": "MaharaTech",
-            "date": "2025",
-            "url": "#"
-        },
-        {
-            "name": "SQL (Intermediate) Certificate",
-            "issuer": "HackerRank",
-            "date": "2022",
-            "url": "https://www.hackerrank.com/certificates/sample_cert_2"
-        },
-        {
-            "name": "Certificate of Completion for Python Basics",
-            "issuer": "HackerRank",
-            "date": "2022",
-            "url": "https://www.hackerrank.com/certificates/sample_cert_1"
+            "date": "2024",
+            "image": "assets/education_photos/achievements/Python Language Fundamentals.png",
+            "hours": "2 hours",
+            "url": "https://maharatech.gov.eg/course/view.php?id=43"
         }
     ]
 }
