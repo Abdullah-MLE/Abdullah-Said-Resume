@@ -1,65 +1,162 @@
 [
     {
+        "title": "RAG app using python",
+        "tech": ["Python", "LLMs", "FastAPI", "RAG"],
+        "Category": "ai",
+        "image": "assets/projects_photos/RAG app using python.png",
+        "show_live_url": "#",
+        "Source_url": "https://github.com/Abdullah-MLE/RAG-APP"
+    },
+    {
+        "title": "LLM Dynamic Routing System",
+        "tech": ["Python", "Streamlit", "LLMs"],
+        "Category": "ai",
+        "image": "assets/projects_photos/LLM Dynamic Routing System.png",
+        "show_live_url": "https://llm-dynamic-routing.streamlit.app/",
+        "Source_url": "https://github.com/Abdullah-MLE/LLM_Dynamic_Routing"
+    },
+    {
+        "title": "RAG app using java",
+        "tech": ["JAVA", "Bootstrap", "LLMs"],
+        "Category": "ai",
+        "image": "assets/projects_photos/RAG app using java.png",
+        "show_live_url": "#",
+        "Source_url": "https://github.com/AbdoElwahdh/RAG"
+    },
+    {
+        "title": "n8n Socail Medai Automation System",
+        "tech": ["Python", "n8n", "Automation", "LLMa"],
+        "Category": "automation",
+        "image": "assets/projects_photos/n8n Socail Medai Automation System.png",
+        "show_live_url": "#",
+        "Source_url": "#"
+    },
+    {
         "title": "Football Data Visualization",
-        "description": "Advanced football data analytics built with Streamlit.",
-        "image": "assets/Football Data Visualization Dashboard.png",
-        "tech": ["Streamlit", "Python", "Data Visualization"],
-        "page": "Football_Analytics",
+        "tech": ["Python", "Streamlit", "Data Visualization"],
+        "Category": "data_analysis",
+        "image": "assets/projects_photos/Football Data Visualization.png",
         "show_live_url": "#",
-        "github_url": "https://github.com/Abdullah-MLE/football-EDA"
+        "Source_url": "https://github.com/Abdullah-MLE/football-EDA"
     },
     {
-        "title": "Mini-RAG Project",
-        "description": "A lightweight retrieval-augmented generation system.",
-        "image": "assets/Mini-RAG Project.jpg",
-        "tech": ["RAG", "Python", "LLM"],
-        "page": "Mini_RAG",
+        "title": "Analyzing Historical Stock Revenue Data and Building a Dashboard",
+        "tech": ["Python", "Streamlit", "Data Visualization", "Data Analysis", "Web Scraping"],
+        "Category": "data_analysis",
+        "image": "assets/projects_photos/Analyzing Historical Stock Revenue Data and Building a Dashboard.png",
         "show_live_url": "#",
-        "github_url": "https://github.com/Abdullah-MLE/RAG-APP"
+        "Source_url": "https://github.com/Abdullah-MLE/Analyzing-Historical-Stock-Revenue-Data-and-Building-a-Dashboard"
     },
     {
-        "title": "Data Cleaning",
-        "description": "Data cleansing for a real-estate dataset.",
-        "image": "assets/Data Cleaning.png",
-        "tech": ["Python", "Pandas", "Data Cleaning"],
-        "page": "Data_Cleaning",
+        "title": "Panda chain of stores Dashbord",
+        "tech": ["Power BI", "Data Visualization", "Data Analysis"],
+        "Category": "data_analysis",
+        "image": "assets/projects_photos/Panda chain of stores Dashbord.png",
         "show_live_url": "#",
-        "github_url": "https://github.com/Abdullah-MLE/Real-Estate-Data-Cleanse"
+        "Source_url": "https://drive.google.com/drive/folders/1DEB49O_r9yGlOsnX-Y4jzeWX8VjTh2qq?usp=sharing"
     },
     {
-        "title": "Exploratory Data Analysis (EDA)",
-        "description": "EDA projects performed across multiple datasets.",
-        "image": "assets/Exploratory Data Analysis (EDA).jpg",
-        "tech": ["Python", "Pandas", "Matplotlib", "Seaborn"],
-        "page": "EDA_Projects",
+        "title": "Pavan Lalwani Sales Report Dashbord",
+        "tech": ["Power BI", "Data Visualization", "Data Analysis"],
+        "Category": "data_analysis",
+        "image": "assets/projects_photos/Pavan Lalwani Sales Report Dashbord.png",
         "show_live_url": "#",
-        "github_url": "#"
+        "Source_url": "https://drive.google.com/drive/folders/1lHCtR3861gzVw33L3NDGi8KW5d6HY96E?usp=sharing"
     },
     {
-        "title": "Web Scraping Projects",
-        "description": "Automated extraction and structuring of web data.",
-        "image": "assets/Web Scraping.jpg",
-        "tech": ["Python", "BeautifulSoup", "Scrapy"],
-        "page": "Web_Scraping",
-        "show_live_url": "https://github.com/Abdullah-MLE/Carrefour-Product-Scraper",
-        "github_url": "#"
+        "title": "Real Estate Data Cleaning",
+        "tech": ["Python", "Excle", "Data Cleaning"],
+        "Category": "data_analysis",
+        "image": "assets/projects_photos/Real Estate Data Cleaning.png",
+        "show_live_url": "#",
+        "Source_url": "https://github.com/Abdullah-MLE/Real-Estate-Data-Cleanse"
     },
     {
-        "title": "Power BI Dashboards",
-        "description": "Created multiple interactive dashboards using Power BI.",
-        "image": "assets/Power BI Dashboards.png",
-        "tech": ["Power BI", "DAX", "Data Modeling"],
-        "page": "PowerBI_Dashboards",
+        "title": "EDA for price prediction dataset",
+        "tech": ["Python", "EDA", "Data Visualization"],
+        "Category": "data_analysis",
+        "image": "assets/projects_photos/EDA for price prediction dataset.png",
         "show_live_url": "#",
-        "github_url": "#"
+        "Source_url": "https://drive.google.com/drive/folders/1IZC7dx3-zd8RxdgfH65BPC6sNvNZaIiQ?usp=sharing"
     },
     {
-        "title": "FastAPI & Streamlit Apps",
-        "description": "Developed data-driven and AI-powered applications.",
-        "image": "assets/FastAPI & Streamlit Apps.jpg",
-        "tech": ["FastAPI", "Streamlit", "Python"],
-        "page": "FastAPI_Streamlit_Apps",
+        "title": "EDA on superstore dataset",
+        "tech": ["Python", "EDA", "Data Visualization"],
+        "Category": "data_analysis",
+        "image": "assets/projects_photos/EDA on superstore dataset.png",
         "show_live_url": "#",
-        "github_url": "#"
+        "Source_url": "https://drive.google.com/drive/folders/1KgSaidSQPjVYA4wrVQv8ycGQhq9G-Wfy?usp=sharing"
+    },
+    {
+        "title": "Carrefour Product Scraper",
+        "tech": ["Python", "Web Scraping", "Data Visualization"],
+        "Category": "web_scraping",
+        "image": "assets/projects_photos/Carrefour Product Scraper.png",
+        "show_live_url": "#",
+        "Source_url": "https://github.com/Abdullah-MLE/Carrefour-Product-Scraper"
+    },
+    {
+        "title": "Script the Scribd website for books",
+        "tech": ["Python", "Web Scraping", "Data Visualization"],
+        "Category": "web_scraping",
+        "image": "assets/projects_photos/Script the Scribd website for books.png",
+        "show_live_url": "#",
+        "Source_url": "#"
+    },
+    {
+        "title": "extracting books data from Printrado website",
+        "tech": ["Python", "Web Scraping", "Data Visualization"],
+        "Category": "web_scraping",
+        "image": "assets/projects_photos/extracting books data from Printrado website.png",
+        "show_live_url": "#",
+        "Source_url": "https://github.com/Abdullah-MLE/extracting-books-data-from-Printrado-website"
+    },
+    {
+        "title": "titanic dataset ML model",
+        "tech": ["Python", "ML", "Data Preprocessing", "Model Training", "Model Evaluation"],
+        "Category": "ml_data_science",
+        "image": "assets/projects_photos/titanic dataset ML model.png",
+        "show_live_url": "#",
+        "Source_url": "https://www.kaggle.com/code/abdullahsaid814/titanic?scriptVersionId=264349260"
+    },
+    {
+        "title": "Amazon 2025 DB ML Regressor Model",
+        "tech": ["Python", "ML", "Data Preprocessing", "Model Training", "Model Evaluation"],
+        "Category": "ml_data_science",
+        "image": "assets/projects_photos/Amazon 2025 DB ML Regressor Model.png",
+        "show_live_url": "#",
+        "Source_url": "https://www.kaggle.com/code/abdullahsaid814/abdullah-said-amazon-25-db"
+    },
+    {
+        "title": "vehicle dataset ML Classification model",
+        "tech": ["Python", "ML", "Data Preprocessing", "Model Training", "Model Evaluation"],
+        "Category": "ml_data_science",
+        "image": "assets/projects_photos/vehicle dataset ML Classification model.png",
+        "show_live_url": "#",
+        "Source_url": "https://www.kaggle.com/code/abdullahsaid814/abdullah-said-vehicle-dataset-from-cardekho"
+    },
+    {
+        "title": "Liner Regression from scratch multi feature Implementation",
+        "tech": ["Python", "ML"],
+        "Category": "ml_data_science",
+        "image": "assets/projects_photos/Liner Regression from scratch multi feature Implementation.png",
+        "show_live_url": "#",
+        "Source_url": "https://github.com/Abdullah-MLE/Linear-Regression-multi-feature-Implementation-from-SCRATCH"
+    },
+    {
+        "title": "NN from scratch using java",
+        "tech": ["JAVA", "DL"],
+        "Category": "deep_learning",
+        "image": "assets/projects_photos/NN from scratch using java.png",
+        "show_live_url": "#",
+        "Source_url": "https://github.com/AbdoElwahdh/NN_from_scratch"
+    },
+    {
+        "title": "Personal Website",
+        "tech": ["Python", "Streamlit", "Data Visualization"],
+        "Category": "websites",
+        "image": "assets/projects_photos/Personal Website.png",
+        "show_live_url": "https://abdullah-said.streamlit.app/",
+        "Source_url": "https://github.com/Abdullah-MLE/Abdullah-Said-Resume"
     }
 ]
