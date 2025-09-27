@@ -1,0 +1,48 @@
+{
+  "header": {
+    "title": "Abdullah Said Portfolio"
+  },
+  "get_in_touch": {
+    "title": "Get in Touch",
+    "description": "I'm always open to discussing new opportunities and interesting projects. Feel free to reach out!"
+  },
+  "about": {
+    "header": "About Me",
+    "text": "I am Abdullah Said, an AI & Data Science Engineer passionate about transforming complex data into intelligent solutions.\n\n- Hands-on experience in developing, deploying, and optimizing machine learning & deep learning models.\n- Skilled in building end-to-end ML pipelines: data collection, preprocessing, model training, and deployment.\n- Practical expertise in data analysis & visualization to drive data-driven decision-making.\n- Strong knowledge of RAG-based systems and applied AI solutions across industries.\n\nI thrive on creating impactful, real-world applications and continuously exploring new ways to leverage AI for smarter, more sustainable growth."
+  },
+  "skills": {
+    "header": "Key Competencies",
+    "categories": [
+      {
+        "title": "AI & Machine Learning",
+        "items": [
+          "Machine Learning",
+          "Deep Learning",
+          "Model Deployment",
+          "RAG Systems",
+          "LlamaIndex"
+        ]
+      },
+      {
+        "title": "Data & Analytics",
+        "items": [
+          "Data Analysis",
+          "Data Visualization",
+          "Data Cleaning",
+          "SQL & Databases",
+          "Power BI",
+          "Web Scraping"
+        ]
+      },
+      {
+        "title": "Development & Professional",
+        "items": [
+          "FastAPI / Streamlit",
+          "Problem Solving",
+          "Research Projects",
+          "Team Collaboration"
+        ]
+      }
+    ]
+  }
+}

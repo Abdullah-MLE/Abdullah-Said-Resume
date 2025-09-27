@@ -14,19 +14,19 @@ class Portfolio:
         )
         self.education = self.load_data('data/education.json')
         self.contact_info = self.load_data('data/contact_info.json')
+        self.content = self.load_data('data/content.json')
 
     def load_data(self, filepath):
         with open(filepath, 'r', encoding='utf-8') as file:
             return json.load(file)
 
     def render_header(self):
-        st.title("Abdullah Said Portfolio")
+        st.title(self.content['header']['title'])
 
     def _render_contact_details(self):
-        st.header("Get in Touch")
+        st.header(self.content['get_in_touch']['title'])
         st.write(
-            "I'm always open to discussing new opportunities and "
-            "interesting projects. Feel free to reach out!"
+            self.content['get_in_touch']['description']
         )
         st.write(f'📧 Email: {self.contact_info["email"]}')
         st.write(f'📱 Phone: {self.contact_info["phone"]}')
@@ -70,23 +70,10 @@ class Portfolio:
             self.render_contact()
 
     def render_about(self):
-        st.header("About Me")
+        st.header(self.content['about']['header'])
         col1, col2 = st.columns([2, 1])
         with col1:
-            st.write("""
-                Hello! I'm a passionate software developer with expertise in
-                full-stack development and data analysis. I love creating
-                innovative solutions that make a real impact.
-
-                With 5+ years of experience in the tech industry, I've
-                worked on various projects ranging from web applications to
-                machine learning models. I'm always eager to learn new
-                technologies and take on challenging projects.
-
-                When I'm not coding, you can find me exploring new
-                technologies, contributing to open-source projects, or
-                enjoying outdoor activities.
-            """)
+            st.write(self.content['about']['text'])
         with col2:
             st.image("assets/profile.png")
 
@@ -155,35 +142,14 @@ class Portfolio:
             st.markdown("---")
 
     def render_skills(self):
-        st.header("Key Competencies")
+        st.header(self.content['skills']['header'])
+        categories = self.content['skills']['categories']
         col1, col2, col3 = st.columns(3)
-        with col1:
-            st.subheader("AI & Machine Learning")
-            st.write("""
-                - Machine Learning
-                - Deep Learning
-                - Model Deployment
-                - RAG Systems
-                - LlamaIndex
-            """)
-        with col2:
-            st.subheader("Data & Analytics")
-            st.write("""
-                - Data Analysis
-                - Data Visualization
-                - Data Cleaning
-                - SQL & Databases
-                - Power BI
-                - Web Scraping
-            """)
-        with col3:
-            st.subheader("Development & Professional")
-            st.write("""
-                - FastAPI / Streamlit
-                - Problem Solving
-                - Research Projects
-                - Team Collaboration
-            """)
+        cols = [col1, col2, col3]
+        for i, category in enumerate(categories):
+            with cols[i]:
+                st.subheader(category['title'])
+                st.write("\n".join([f"- {item}" for item in category['items']]))
 
     def render_education(self):
         st.header("Education")
