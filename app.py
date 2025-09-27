@@ -71,7 +71,7 @@ class Portfolio:
         with col1:
             st.write(self.content['about']['text'])
         with col2:
-            st.image("assets\personal_photos\profile.png")
+            st.image("assets/personal_photos/profile.png")
 
         st.write("---")
         self.render_skills()
